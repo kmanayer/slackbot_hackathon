@@ -1,0 +1,2 @@
+- name: Check pull request title
+  uses: Slashgear/action-check-pr-title@v1.0.0
