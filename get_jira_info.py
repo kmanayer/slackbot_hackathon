@@ -17,6 +17,7 @@ if __name__ == "__main__":
 
   for story in data['issues']:
     story_obj = {}
+    story_obj['story_id'] = story['key']
     story_obj['project_name'] = story['fields']['project']['name']
     story_obj['project_url'] = story['fields']['project']['self']
     story_obj['sprint_name'] = story['fields']['sprint']['name']
