@@ -30,7 +30,7 @@ def call_github():
 
       # construct output
       title = pr['title']
-      url = pr['url']
+      url = pr['html_url']
       story_num = title.split(":")[0]
 
       all_reviewer_usernames = ", ".join(reviewer_usernames)
