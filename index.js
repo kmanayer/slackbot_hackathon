@@ -1,8 +1,9 @@
 const SlackBot = require('slackbots');
 const axios = require('axios');
+const {spawn} = require('child_process');
 
 const bot = new SlackBot({
-	token: 'xoxb-2231900078929-2235211543121-6BJRGkSwkIw84eLSccMnxcDb',
+	token: 'xoxb-2231900078929-2235211543121-uOzFqHuffIIggjd8xxFyGWGd',
 	name: 'jokebot2'
 });
 
@@ -25,15 +26,29 @@ bot.on('message', (data) => {
 	if (data.type !== 'message') {
 		return;
 	}
-
 	console.log(data);
+	handleMessage(data);
 })
 
 // Respond to mentions
-function handleMessage(message) {
+function handleMessage(data) {
+	message = data['text']
 	if(message.includes(' chucknorris')) {
 		chuckJoke();
+	} else if(message.includes(' report')) {
+		sendReport();
 	}
+}
+
+// Compile and send report
+function sendReport() {
+	const params = {
+		icon_emoji: ':bar_chart:'
+	}
+	const python = spawn('python', ['test.py']);
+	python.stdout.on('data', function (data) {
+		bot.postMessageToChannel('general', data.toString(), params);
+	});
 }
 
 // Tell a Chuck Norris Joke
