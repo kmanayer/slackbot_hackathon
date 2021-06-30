@@ -32,6 +32,7 @@ def call_github():
       title = pr['title']
       url = pr['url']
       story_num = title.split(":")[0]
+
       all_reviewer_usernames = ", ".join(reviewer_usernames)
 
 
@@ -77,7 +78,7 @@ def call_jira():
     story_obj['project_url'] = story['fields']['project']['self']
     story_obj['sprint_name'] = story['fields']['sprint']['name']
     story_obj['sprint_start_date'] = story['fields']['sprint']['startDate']
-    story_obj['sprint_end_date'] = story['fields']['sprint']['endDate']
+    story_obj['sprint_end_date'] = story['fields']['sprint']['endDate'][:10]
     story_obj['story_name'] = story['key']
     story_obj['story_url'] = story['self']
     story_obj['priority_num'] = story['fields']['priority']['id']
@@ -105,9 +106,9 @@ if __name__ == "__main__":
                     emoji = failed_emoji
                 elif (pr['status'] == 'success'):
                     emoji = success_emoji
-
                 output = emoji + ' ' + pr['title'] + " (" + pr['url'] + ") is awaiting review by " + pr['reviewer_usernames'] +\
-                         " and has been open for " + str(pr['days_open']) + " days. Story points: " + str(story['points']) + "\n\n"
+                         " and has been open for " + str(pr['days_open'] + 1) + " day. \nStory points: " + str(story['points']) + \
+                         "\nTarget end date: " + story['sprint_end_date'] + "\n\n"
                 output_msg += output
                 continue
 
