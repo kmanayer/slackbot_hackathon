@@ -12,8 +12,6 @@ jobs:
   publish:
     runs-on: ubuntu-18.04
     steps:
-      - uses: actions/checkout@v1
-      - uses: dylanvann/check-pull-request-title@v1
+      - uses: Slashgear/action-check-pr-title@1.0.0
         with:
-          # Match pull request titles in the form UI-1234 - Message.
-          pattern: '^DTCRPACCT-\d*: '
+            regex: '(DTCRPACCT)\w+(:)[\w\s]+' # Regex the title should match.
