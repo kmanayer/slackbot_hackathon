@@ -93,7 +93,7 @@ if __name__ == "__main__":
     jira_info = call_jira()
 
     failed_emoji = ':red_circle:'
-    success_emoji = ':large_green_cirlce:'
+    success_emoji = ':large_green_circle:'
     pending_emoji = ':large_yellow_circle:'
 
     output_msg = ""
