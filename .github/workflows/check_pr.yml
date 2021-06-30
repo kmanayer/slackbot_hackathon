@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: deepakputhraya/action-pr-title@master
       with:
-        regex: '(DTCRPACCT)\w+(:)[\w\s]+' # Regex the title should match.
+        regex: '(DTCRPACCT-)\w+(:)[\w\s]+' # Regex the title should match.
         min_length: 5 # Min length of the title
         max_length: 100 # Max length of the title
