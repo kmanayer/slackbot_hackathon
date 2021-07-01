@@ -7,7 +7,7 @@ def call_github():
 
 # make the github request
   params = {'state':'open'}
-  headers = {'User-Agent':'request','Authorization':'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'}
+  headers = {'User-Agent':'request','Authorization':'xxxxxxx'}
   resp = requests.get('https://api.github.com/repos/Slackbot-Hackathon/slackbot_hackathon/pulls', params=params, headers=headers)
 
   if resp.status_code != 200:
